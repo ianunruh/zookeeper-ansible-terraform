@@ -1,0 +1,15 @@
+- apt: pkg={{ item }}
+  with_items:
+    - htop
+    - openjdk-7-jre-headless
+    - zookeeperd
+
+- template: src=zoo.cfg dest=/etc/zookeeper/conf/zoo.cfg
+  notify:
+    - restart zookeeper
+
+- copy: content={{ nz_index }} dest=/var/lib/zookeeper/myid
+  notify:
+    - restart zookeeper
+
+- service: name=zookeeper state=started
