@@ -3,4 +3,4 @@ set -eux
 
 python clean-known-hosts.py
 
-terraform destroy terraform
+terraform destroy -force terraform
