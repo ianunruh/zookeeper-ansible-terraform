@@ -3,7 +3,7 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_droplet" "zk" {
-  count = 3
+  count = "${var.cluster_size}"
 
   name = "zk-demo-${count.index}"
 
